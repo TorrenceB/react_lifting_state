@@ -5,20 +5,18 @@ const scaleNames = {
     f: 'Farenheit',
 }
 
-export default class TemperatureInput extends Component {    
-
-    state = {
-        temperature: '',
-    }
+export default class TemperatureInput extends Component {   
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this)
+    }     
 
     handleChange = (e) => {
-        this.setState({
-            temperature: e.target.value,
-        })
+        this.props.onTemperatureChange(e.target.value);
     }
 
     render() {
-        const temperature = this.state.temperature;
+        const temperature = this.props.temperature;
         const scale = this.props.scale;
         return(
             <fieldset>
